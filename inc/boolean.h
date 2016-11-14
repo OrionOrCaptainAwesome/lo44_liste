@@ -4,6 +4,8 @@
  * Ce document est sous Licence GPL v2
  * voir : http://www.gnu.org/licenses/gpl-2.0.html
  */
+#include <stdlib.h>
+#include <stdio.h>
 
 #ifndef __BOOLEAN_H
 #define __BOOLEAN_H

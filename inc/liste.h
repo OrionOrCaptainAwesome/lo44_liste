@@ -4,7 +4,11 @@
  * Ce document est sous Licence GPL v3
  * voir : http://www.gnu.org/licenses/gpl-3.0.html
  */
+
+#include <stdlib.h>
+#include <stdio.h>
 #include "boolean.h"
+
 
 #ifndef __LISTE__H__
 #define __LISTE__H__
@@ -13,10 +17,18 @@
 typedef struct element	{
 			int valeur;
 			element *suivant;
-			}element;
+}element;
 			
-typedef element *liste;
+typedef element* liste;
 
+//ajouter toutes les entete de fonction genre ci dessous
+/**
+ * Fonction qui fait d'autres choses
+ * m (float**) : Matrice qui stocke quelque chose
+ * r (int) : nombre de lignes de m
+ * c (int) : nombre de colonnes de m
+ * returns quelque chose (float**)
+ */
 
 BOOL estVide(liste L);
 liste dernier(liste L);
