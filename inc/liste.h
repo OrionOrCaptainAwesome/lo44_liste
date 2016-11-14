@@ -10,16 +10,18 @@
 #include "boolean.h"
 
 
+
 #ifndef __LISTE__H__
 #define __LISTE__H__
 
+typedef struct Elem Elem;
+typedef struct Elem {
+                int valeur;
+                Elem* suivant;
+}Element;
 
-typedef struct element	{
-			int valeur;
-			element *suivant;
-}element;
-			
-typedef element* liste;
+typedef Element *Liste;
+
 
 //ajouter toutes les entete de fonction genre ci dessous
 /**
@@ -30,20 +32,19 @@ typedef element* liste;
  * returns quelque chose (float**)
  */
 
-BOOL estVide(liste L);
-liste dernier(liste L);
-liste nouveauElement(void);
-liste ajouterTete(liste L, int val);
-liste ajouterQueue(liste L, int val);
-
-liste supprimerTete(liste L);
-liste succ(liste L);
-liste supprimerQueue(liste L);
-void afficherListe(liste L);
-int valeurTete(liste L);
-int nbElement(liste L);
-BOOL existe(liste L, int val);
-
+Liste initialiserListe(Liste L);
+BOOL estVide(Liste L);
+Liste dernier(Liste L);
+Liste nouveauElement(void);
+Liste ajouterTete(Liste L, int val);
+Liste ajouterQueue(Liste L, int val);
+Liste supprimerTete(Liste L);
+Liste succ(Liste L);
+Liste supprimerQueue(Liste L);
+void afficherListe(Liste L);
+int valeurTete(Liste L);
+int nbElement(Liste L);
+BOOL existe(Liste L, int val);
 
 #endif /* __LISTE__H__ */
 

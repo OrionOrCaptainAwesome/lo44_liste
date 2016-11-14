@@ -5,36 +5,33 @@
  * voir : http://www.gnu.org/licenses/lgpl-3.0.html
  */
 
-//Definition liste chainee d entiers
-
 #include <stdlib.h>
 #include <stdio.h>
+
 #include "boolean.h"
 #include "liste.h"
 
 
-liste creer_liste(void)
+Liste initialiserListe(Liste L)
 {
-	liste L;
-	L = NULL;
-	return L;
+	return L = NULL;
 }
 
 
-BOOL estVide(liste L)
+BOOL estVide(Liste L)
 {
-        return L==NULL;
+        return L == NULL;
 }
 
-liste dernier(liste L)
+Liste dernier(Liste L)
 {
+	Liste d;
 	if (estVide(L))
 	{
 		return L;
 	}
 	else
 	{
-		liste d;
 		d = L;
 		while (d->suivant != NULL)
 		{
@@ -44,28 +41,28 @@ liste dernier(liste L)
 	return d;
 }
 
-liste nouveauElement(void)
+Liste nouveauElement(void)
 {
-	liste nouvElem;
-	nouvElem = (element*)malloc(sizeof(element));
+	Liste nouvElem;
+	nouvElem = (Element*)malloc(sizeof(Element));
 	nouvElem = NULL;
 	return nouvElem;
 }
 
 
-liste ajouterTete(liste L, int val)
+Liste ajouterTete(Liste L, int val)
 {
-	liste temp;
+	Liste temp;
 	temp = nouveauElement();
 	temp->valeur = val;
 	temp->suivant = L;
 	return temp;
 }
 
-liste ajouterQueue(liste L, int val)
+Liste ajouterQueue(Liste L, int val)
 {
-	liste temp;
-	liste d;
+	Liste temp;
+	Liste d;
 
 	temp = nouveauElement();
 	temp->valeur = val;
@@ -82,7 +79,7 @@ liste ajouterQueue(liste L, int val)
 	return L;
 }
 
-liste supprimerTete(liste L)
+Liste supprimerTete(Liste L)
 {
 	if (estVide(L))
     	{
@@ -90,18 +87,18 @@ liste supprimerTete(liste L)
     	}
     	else
     	{
-		liste temp;
+		Liste temp;
 		temp = L->suivant;
 		free(L);
         	return temp;
     	}
 }
 
-liste succ(liste L)
+Liste succ(Liste L)
 {
         if (estVide(L))
         {
-		printf("La liste est vide !");
+		printf("\nLa liste est vide , je vais retourner la meme liste !\n");
                 return L;
         }
         else
@@ -110,7 +107,7 @@ liste succ(liste L)
         }	
 }
 
-liste supprimerQueue(liste L)
+Liste supprimerQueue(Liste L)
 {
     if (estVide(L))
     {
@@ -120,8 +117,8 @@ liste supprimerQueue(liste L)
     {
         if (L->suivant != NULL)
         {
-            liste temp = L;
-            liste q;
+            Liste temp = L;
+            Liste q;
             while (temp->suivant != NULL)
             {
                 temp = temp->suivant;
@@ -139,26 +136,34 @@ liste supprimerQueue(liste L)
     }
 }
 
-void afficherListe(liste L)
+void afficherListe(Liste L)
 {
-    liste temp;
-    temp = L;
-    while (temp->suivant != NULL)
+    if (estVide(L))
     {
-        printf("Valeur de l'élément pointer : %d \n", temp->valeur);
-    	if (temp->suivant == NULL)
-    	{
-		printf("Valeur de l'élément pointer : %d \n", temp->valeur);
-	}
-	temp = temp->suivant;
+        printf("[liste vide valeur et suivant = NULL]");
+    }
+    else
+    {
+        Liste temp;
+        temp = L;
+        printf("[");
+        while (temp->suivant != NULL)
+        {
+            printf(" %d ->", temp->valeur);
+            if (temp->suivant == NULL)
+    	    {
+	        printf(" %d -> NULL]\n", temp->valeur);
+	    }
+	    temp = temp->suivant;
+        }
     }
 }
 
-int valeurTete(liste L)
+int valeurTete(Liste L)
 {
 	if (estVide(L))
 	{
-		printf("Code erreur NTM !! La liste est vide mais il faut une valeur de retour par defaut a 0");
+		printf("La liste est vide mais il faut une valeur de retour par defaut a 0\n");
 		return 	0;
 	}
 	else
@@ -167,17 +172,17 @@ int valeurTete(liste L)
 	}
 }
 
-int nbElement(liste L)
+int nbElement(Liste L)
 {
 	if (estVide(L))
 	{
-		printf("La liste est vide !");
+		printf("La liste est vide donc l'element n'a pas ete trouver !\n");
 		return 0;
 	}
 	else	
 	{
 	        int nbElement = 0;
-	        liste temp;
+	        Liste temp;
         	temp = L;
 
 		while (temp->suivant != NULL)
@@ -188,22 +193,23 @@ int nbElement(liste L)
 	}
 }
 
-BOOL existe(liste L, int val)
+BOOL existe(Liste L, int val)
 {
+	BOOL estContenu = FALSE;
+
 	if (estVide(L))
 	{
-		printf("La liste est vide !");
-		return FALSE;
+		printf("La liste est vide donc forcement il existe pas !\n");
+		estContenu = FALSE;
 	}
 	else
 	{
-		BOOL estContenu = FALSE;
-		liste temp = L;
+		Liste temp = L;
 		while (temp->suivant != NULL)
 		{
 			if (temp->valeur == val)
 			{
-				return TRUE;
+				estContenu = TRUE;
 			}
 			temp = temp->suivant;
 		}
@@ -211,7 +217,7 @@ BOOL existe(liste L, int val)
 		{
 			if (temp->valeur == val)
                         {
-                                return TRUE;
+                                estContenu = TRUE;
                         }
 		}
 	}

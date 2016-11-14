@@ -7,12 +7,33 @@
 
 #include <stdio.h>
 #include <stdlib.h>
+
 #include "liste.h"
 #include "boolean.h"
 #include "efface_ecran.h"
 
 int main(void)
 {
-    return EXIT_SUCCESS;
+	Liste maListe = NULL;
+	//maListe = initialiserListe(maListe);
+	maListe = ajouterQueue(maListe , 3);
+	afficherListe(maListe);
+
+	return EXIT_SUCCESS;
 }
 
+/*
+Liste initialiserListe(Liste L);
+BOOL estVide(Liste L);
+Liste dernier(Liste L);
+Liste nouveauElement(void);
+Liste ajouterTete(Liste L, int val);
+Liste ajouterQueue(Liste L, int val);
+Liste supprimerTete(Liste L);
+Liste succ(Liste L);
+Liste supprimerQueue(Liste L);
+void afficherListe(Liste L);
+int valeurTete(Liste L);
+int nbElement(Liste L);
+BOOL existe(Liste L, int val);
+*/
