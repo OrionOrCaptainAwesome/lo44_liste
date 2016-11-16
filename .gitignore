@@ -4,4 +4,5 @@ create_source_code.sh
 en_tete.c
 makefile
 .gitignore
+test git avec VS code
 
