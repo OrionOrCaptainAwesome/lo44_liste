@@ -17,7 +17,7 @@
 typedef struct Elem Elem;
 typedef struct Elem {
                 int valeur;
-                Elem* suivant;
+                Elem *suivant;
 }Element;
 
 typedef Element *Liste;
@@ -31,6 +31,9 @@ typedef Element *Liste;
  * c (int) : nombre de colonnes de m
  * returns quelque chose (float**)
  */
+
+
+/* Prototypes des fonctions */
 
 Liste initialiserListe(Liste L);
 BOOL estVide(Liste L);
