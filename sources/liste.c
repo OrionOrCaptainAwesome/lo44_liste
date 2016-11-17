@@ -12,7 +12,7 @@
 #include "liste.h"
 
 
-Liste initialiserListe(Liste L)
+Liste initialiserListe(void)
 {
 	return NULL;
 }
