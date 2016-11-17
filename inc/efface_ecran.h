@@ -5,6 +5,9 @@
  * voir : http://www.gnu.org/licenses/gpl-3.0.html
  */
 
+#include <stdlib.h>
+#include <stdio.h>
+
 #ifndef __EFACE_ECRAN__H__
 #define __EFACE_ECRAN__H__
 
