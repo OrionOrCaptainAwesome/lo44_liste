@@ -14,9 +14,8 @@
 
 int main(void)
 {
-	Liste maListe = NULL;
+	Liste maListe = initialiserListe(maListe);
 	//maListe = initialiserListe(maListe);
-	maListe = ajouterQueue(maListe , 3);
 	afficherListe(maListe);
 
 	return EXIT_SUCCESS;

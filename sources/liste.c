@@ -14,7 +14,7 @@
 
 Liste initialiserListe(Liste L)
 {
-	return L = NULL;
+	return NULL;
 }
 
 
@@ -140,7 +140,7 @@ void afficherListe(Liste L)
 {
     if (estVide(L))
     {
-        printf("[liste vide valeur et suivant = NULL]");
+        printf("[liste vide donc valeur et suivant = NULL]");
     }
     else
     {
@@ -153,8 +153,8 @@ void afficherListe(Liste L)
             if (temp->suivant == NULL)
     	    {
 	        printf(" %d -> NULL]\n", temp->valeur);
-	    }
-	    temp = temp->suivant;
+	    	}
+	    	temp = temp->suivant;
         }
     }
 }
@@ -181,9 +181,9 @@ int nbElement(Liste L)
 	}
 	else	
 	{
-	        int nbElement = 0;
-	        Liste temp;
-        	temp = L;
+        int nbElement = 0;
+        Liste temp;
+      	temp = L;
 
 		while (temp->suivant != NULL)
 		{
@@ -216,11 +216,10 @@ BOOL existe(Liste L, int val)
 		if (temp->suivant == NULL)
 		{
 			if (temp->valeur == val)
-                        {
-                                estContenu = TRUE;
-                        }
+            {
+            	estContenu = TRUE;
+        	}
 		}
 	}
 	return estContenu;
 }
-
