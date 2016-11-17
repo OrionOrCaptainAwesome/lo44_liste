@@ -35,7 +35,7 @@ typedef Element *Liste;
 
 /* Prototypes des fonctions */
 
-Liste initialiserListe(Liste L);
+Liste initialiserListe(void);
 BOOL estVide(Liste L);
 Liste dernier(Liste L);
 Liste nouveauElement(void);
