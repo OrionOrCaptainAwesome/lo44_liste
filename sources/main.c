@@ -4,14 +4,13 @@
  * Ce document est sous Licence :  GPL v3
  * voir :  http://www.gnu.org/licenses/gpl-3.0.html
  */
-//test github vers VSCode
+
 #include <stdio.h>
 #include <stdlib.h>
 
 #include "liste.h"
 #include "boolean.h"
 #include "efface_ecran.h"
-//test2
 
 int main(void)
 {
