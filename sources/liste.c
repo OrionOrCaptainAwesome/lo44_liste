@@ -126,7 +126,7 @@ Liste supprimerQueue(Liste L)
 		temp = q;
                 q = succ(q);
             }
-            succ(temp) = NULL;
+            temp->suivant = NULL;
 	    free(q);
         }
         else
@@ -154,7 +154,7 @@ void afficherListe(Liste L)
             printf(" %d ->", valeurTete(temp));
 	    temp = succ(temp);
 	}
-        printf(" NULL]\n", valeurTete(temp));
+        printf(" NULL]\n");
     }
 }
 
