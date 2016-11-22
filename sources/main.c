@@ -14,10 +14,14 @@
 
 int main(void)
 {
-	Liste maListe = NULL;
-	
+	Liste maListe = initialiserListe();
+	int ok;
+	maListe = ajouterTete( maListe , 3);
+	maListe = ajouterQueue( maListe , 4);	
 	afficherListe(maListe);
-
+	printf("Il y a %d element \n", nbElement(maListe));
+	ok = existe(maListe,3);
+	printf("Est ce que 3 existe dans maliste = %d", ok);//ca par contre ca ne marche pas
 	return EXIT_SUCCESS;
 }
 
