@@ -14,8 +14,8 @@
 
 int main(void)
 {
-	Liste maListe = initialiserListe();
-	//maListe = initialiserListe(maListe);
+	Liste maListe = NULL;
+	
 	afficherListe(maListe);
 
 	return EXIT_SUCCESS;

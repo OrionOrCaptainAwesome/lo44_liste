@@ -12,7 +12,7 @@
 #include "liste.h"
 
 
-Liste initialiserListe(void)
+Liste initialiserListe(void) 
 {
 	return NULL;
 }
@@ -25,27 +25,25 @@ BOOL estVide(Liste L)
 
 Liste dernier(Liste L)
 {
-	Liste d;
 	if (estVide(L))
 	{
 		return L;
 	}
 	else
 	{
-		d = L;
-		while (d->suivant != NULL)
+		Liste d = L;
+		while (succ(d) != NULL)
 		{
-			d = d->suivant;
+			d = succ(d);
 		}
+		return d;
 	}
-	return d;
 }
 
 Liste nouveauElement(void)
 {
 	Liste nouvElem;
 	nouvElem = (Element*)malloc(sizeof(Element));
-	nouvElem = NULL;
 	return nouvElem;
 }
 
@@ -66,7 +64,8 @@ Liste ajouterQueue(Liste L, int val)
 
 	temp = nouveauElement();
 	temp->valeur = val;
-	temp->suivant = NULL;
+	temp->suivant = NULL; 
+	
 	if (estVide(L))
 	{
 		L = temp;
@@ -76,6 +75,7 @@ Liste ajouterQueue(Liste L, int val)
 		d = dernier(L);
 		d->suivant = temp;
 	}
+	
 	return L;
 }
 
@@ -83,12 +83,13 @@ Liste supprimerTete(Liste L)
 {
 	if (estVide(L))
     	{
+		printf("La liste est vide ! impossible de supprimer la tete\n");
         	return L;
     	}
     	else
     	{
 		Liste temp;
-		temp = L->suivant;
+		temp = succ(L);
 		free(L);
         	return temp;
     	}
@@ -98,7 +99,6 @@ Liste succ(Liste L)
 {
         if (estVide(L))
         {
-		printf("\nLa liste est vide , je vais retourner la meme liste !\n");
                 return L;
         }
         else
@@ -111,28 +111,30 @@ Liste supprimerQueue(Liste L)
 {
     if (estVide(L))
     {
+	printf("La liste est vide ! impossible de supprimer la queue \n");
         return L;
     }
     else
     {
-        if (L->suivant != NULL)
+	Liste temp = L;
+        
+	if (succ(temp) != NULL)
         {
-            Liste temp = L;
-            Liste q;
-            while (temp->suivant != NULL)
+            Liste q = L;
+	    while (succ(q) != NULL)
             {
-                temp = temp->suivant;
-                q=temp;
+		temp = q;
+                q = succ(q);
             }
-            q->suivant = NULL;
-	    free(temp);
-            return L;
+            succ(temp) = NULL;
+	    free(q);
         }
         else
         {
-	    free(L->suivant);
-            return L;
+	    free(L);
+	    L = NULL;
         }
+	return L;
     }
 }
 
@@ -140,22 +142,19 @@ void afficherListe(Liste L)
 {
     if (estVide(L))
     {
-        printf("[liste vide donc valeur et suivant = NULL]");
+        printf("La liste est vide ! impossible de l'afficher [-> NULL]\n");
     }
     else
     {
-        Liste temp;
-        temp = L;
+        Liste temp = L;
         printf("[");
-        while (temp->suivant != NULL)
+
+        while (!estVide(temp))
         {
-            printf(" %d ->", temp->valeur);
-            if (temp->suivant == NULL)
-    	    {
-	        printf(" %d -> NULL]\n", temp->valeur);
-	    	}
-	    	temp = temp->suivant;
-        }
+            printf(" %d ->", valeurTete(temp));
+	    temp = succ(temp);
+	}
+        printf(" NULL]\n", valeurTete(temp));
     }
 }
 
@@ -176,20 +175,20 @@ int nbElement(Liste L)
 {
 	if (estVide(L))
 	{
-		printf("La liste est vide donc l'element n'a pas ete trouver !\n");
+		printf("La liste est vide donc il ny a aucun element !\n");
 		return 0;
 	}
 	else	
 	{
-        int nbElement = 0;
-        Liste temp;
-      	temp = L;
+        	int nbElement = 0;
+	        Liste temp = L;
 
-		while (temp->suivant != NULL)
+		while (!estVide(temp))
 		{
+			temp = succ(temp);
 			nbElement++;
 		}
-		return nbElement + 1;
+		return nbElement;
 	}
 }
 
@@ -199,26 +198,19 @@ BOOL existe(Liste L, int val)
 
 	if (estVide(L))
 	{
-		printf("La liste est vide donc forcement il existe pas !\n");
+		printf("La liste est vide donc forcement la valeur (%d) nexiste pas !\n", val);
 		estContenu = FALSE;
 	}
 	else
 	{
 		Liste temp = L;
-		while (temp->suivant != NULL)
+		while (!estVide(temp) && estContenu == FALSE)
 		{
-			if (temp->valeur == val)
+			if (valeurTete(temp) == val)
 			{
 				estContenu = TRUE;
 			}
-			temp = temp->suivant;
-		}
-		if (temp->suivant == NULL)
-		{
-			if (temp->valeur == val)
-            {
-            	estContenu = TRUE;
-        	}
+			temp = succ(temp);
 		}
 	}
 	return estContenu;
